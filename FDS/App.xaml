@@ -1,0 +1,54 @@
+﻿<Application x:Class="FDS.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:FDS"
+             xmlns:viewModel ="clr-namespace:FDS.MVVM.ViewModel"
+             xmlns:view ="clr-namespace:FDS.MVVM.View"
+            
+             StartupUri="Login.xaml">
+   
+    <Application.Resources>
+        
+        <ResourceDictionary>
+          
+            <ResourceDictionary.MergedDictionaries>
+                    
+                <ResourceDictionary Source="Theme/MenuButtonTheme.xaml"/>
+                <ResourceDictionary Source="Theme/TextboxTheme.xaml"/>
+                <ResourceDictionary Source="Theme/FormsTheme.xaml"/>
+                <ResourceDictionary Source="Theme/ButtonTheme.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.DeepPurple.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Lime.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.TextBlock.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+            <DataTemplate DataType="{x:Type viewModel:HomeViewModel}" >
+                <view:HomeView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModel:UserViewModel}" >
+                <view:UserView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModel:BeneficiariesViewModel}" >
+                <view:BebeficiariesView/>
+                
+                </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModel:DonorViewModel}" >
+                <view:DonorView/>
+
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModel:FoodstoreViewModel}" >
+                <view:FoodstoreView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModel:DonationViewModel}" >
+                <view:DonationView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModel:DistributionViewModel}" >
+                <view:DistributionView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModel:ReportViewModel}" >
+                <view:Reports/>
+            </DataTemplate>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

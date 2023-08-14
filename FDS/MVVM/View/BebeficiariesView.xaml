@@ -1,0 +1,263 @@
+﻿<UserControl x:Class="FDS.MVVM.View.BebeficiariesView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:FDS.MVVM.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="600" d:DesignWidth="800">
+    <StackPanel>
+        <TextBlock Text="Beneficiaries"
+                   Foreground="White"
+                   FontSize="20"
+                   HorizontalAlignment="Left"
+                   Margin="0,0,0,10"/>
+        <StackPanel Orientation="Horizontal"
+                    Margin="0,0,0,0" RenderTransformOrigin="0.506,0.495">
+
+            <Border Width="799"
+            	
+            	>
+
+                <Border.Background>
+                    <LinearGradientBrush>
+                        <GradientStop Color="#7be9f6" Offset="0.0"/>
+                        <GradientStop Color="#f083da" Offset="1"/>
+                    </LinearGradientBrush>
+                </Border.Background>
+                <Grid>
+                    <Label x:Name="Benname01"
+            			Content=" Name"
+            			VerticalAlignment="top"
+            			HorizontalAlignment="Left"
+            			Margin="0,20,0,0"
+            			Grid.Column="0" Grid.ColumnSpan="2"
+                       />
+                    <TextBox 
+            			Text="{Binding BenUser.BenName}"       
+            			x:Name="FN01"
+            			PreviewTextInput="FN01_PreviewTextInput"
+                        Foreground="White"
+                         Style="{StaticResource ModernForm}"
+            			
+            			VerticalAlignment="Top"
+            			HorizontalAlignment="Left"
+                        BorderBrush="Transparent"
+            			Margin="1,40,0,0"
+            			Background="Transparent"/>
+
+                    <TextBox 
+            			Text="{Binding SelectedBen.BenName}"       
+            			x:Name="UPFN01"
+            			PreviewTextInput="FN01_PreviewTextInput"
+                        Visibility="Collapsed"
+                        Foreground="White"
+            			
+            			VerticalAlignment="Top"
+            			HorizontalAlignment="Left"
+                        BorderBrush="Transparent"
+            			Margin="1,40,0,0"
+                        Style="{StaticResource ModernForm}"
+            			Background="Transparent"/>
+
+                    <Label x:Name="Bencnic01"
+            			Content=" CNIC"
+            			VerticalAlignment="top"
+            			HorizontalAlignment="Left"
+            			Margin="0,69,0,0"
+            			Grid.Column="0"
+                       />
+                    <TextBox 
+            			Text="{Binding BenUser.BenCNIC}"       
+            			x:Name="CNIC01"
+            			MaxLength="13"
+                        Foreground="White"
+                        Style="{StaticResource ModernForm}"
+            			PreviewTextInput="CNIC01_PreviewTextInput"
+            			VerticalAlignment="Top"
+            			HorizontalAlignment="Left"
+                        BorderBrush="Transparent"
+            			Margin="1,92,0,0"
+            			Background="Transparent"/>
+                    <TextBox 
+            			Text="{Binding SelectedBen.BenCNIC}"       
+            			PreviewTextInput="CNIC01_PreviewTextInput"
+                        x:Name="UPCNIC01"
+                        MaxLength="13"
+                        Visibility="Collapsed"
+                        Style="{StaticResource ModernForm}"
+            			
+                        Foreground="White"
+            			
+            			VerticalAlignment="Top"
+            			HorizontalAlignment="Left"
+                        BorderBrush="Transparent"
+            			Margin="1,92,0,0"
+            			Background="Transparent"/>
+
+                    <Label x:Name="ad01"
+                           Content="Address"
+                           VerticalAlignment="Top"
+                           HorizontalAlignment="Center"
+                           Margin="112,20,0,0"/>
+                    <TextBox
+                        Text="{Binding BenUser.BenAddress}"
+                        x:Name="benad01"
+                        Height="100"
+                        Margin="434,44,40,0"
+                        Foreground="Black"
+                        VerticalAlignment="Top"/>
+                    <TextBox
+                        Text="{Binding SelectedBen.BenAddress}"
+                        x:Name="upbenad01"
+                        Visibility="Collapsed"
+                        Height="100"
+                        Margin="434,44,40,0"
+                        Foreground="Black"
+                        VerticalAlignment="Top"/>
+
+                    <Label x:Name="benno01"
+                           Content="Cellphone"
+                           VerticalAlignment="Top"
+                           HorizontalAlignment="Left" Margin="0,128,0,0"/>
+                    <TextBox x:Name="NO01"
+                             PreviewTextInput="CNIC01_PreviewTextInput"
+                             Text="{Binding BenUser.BenNumber}"
+                             Style="{StaticResource ModernForm}"
+                             Foreground="White"
+                             MaxLength="11"
+                             Background="Transparent"
+                             HorizontalAlignment="Left"
+                             VerticalAlignment="Top" Margin="1,154,0,0"/>
+                    <TextBox x:Name="UPN01"
+                             Visibility="Collapsed"
+                             MaxLength="11"
+                             PreviewTextInput="CNIC01_PreviewTextInput"
+                             Text="{Binding SelectedBen.BenNumber}"
+                             Style="{StaticResource ModernForm}"
+                             
+                             Foreground="White"
+                             Background="Transparent"
+                             HorizontalAlignment="Left"
+                             VerticalAlignment="Top" Margin="1,154,0,0"/>
+                    <Label x:Name="bentype01"
+                           Content="Type"
+                           VerticalAlignment="Top"
+                           HorizontalAlignment="Center" Margin="-205,20,0,0"/>
+                    <ComboBox Background="Transparent" 
+                              Width="120"
+                              
+                              Margin="72,28,180,134"
+                              Name="TPCOM01"
+                              
+                              SelectedItem="{Binding BenUser.BenType}"
+                             
+                              >
+
+
+                        <ComboBoxItem  Content="Family"/>
+                        <ComboBoxItem Content="Indiviual"/>
+
+
+                    </ComboBox>
+                    <ComboBox 
+                             Name="UPTPCOM01"
+                              Background="Transparent" 
+                              Width="80"
+                              
+                              Margin="90,46,180,134"
+                              Visibility="Collapsed"
+                              SelectedValue="{Binding SelectedBen.BenType}"
+                              >
+
+
+                        <ComboBoxItem   Content="Family"/>
+                        <ComboBoxItem Content="Indiviual"/>
+
+
+                    </ComboBox>
+                    <Button Width="90"
+                            Command="{Binding AddBenCommand}"
+                            x:Name="benreg"
+                            
+                            Click="benreg_Click"
+                            Content="Register"
+                            Margin="277,154,93,26" 
+                            />
+                    <Button Width="90"
+                            Command="{Binding UpdateBenCommand}"
+                            x:Name="benupdate"
+                            Visibility="Collapsed"
+                            Click="benupdate_Click"
+                            Content="Update"
+                            Margin="277,154,93,26" 
+                            />
+                </Grid>
+            </Border>
+        </StackPanel>
+        
+        
+
+
+            <StackPanel  Orientation="Horizontal">
+                <Border Width="790" Margin="2" >
+
+                    <Border.Background>
+                        <LinearGradientBrush>
+                            <GradientStop Color="#7be9f6" Offset="0.0"/>
+                            <GradientStop Color="#f083da" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Border.Background>
+
+                <Grid Height="250" >
+                    
+
+                    <ListView ItemsSource="{Binding BenLoad}"
+                              Background="Transparent"
+                              HorizontalAlignment="Left"
+                              VerticalAlignment="Bottom" Width="690" Height="250" 
+                              Margin="0" >
+
+
+                        <ListView.View>
+                               
+                            <GridView>
+                                        
+                                    <GridViewColumn Header="Name" DisplayMemberBinding="{Binding BenName}" />
+                                    <GridViewColumn Header="Type" DisplayMemberBinding="{Binding BenType}" />
+                                    <GridViewColumn Header="Address" DisplayMemberBinding="{Binding BenAddress}" />
+                                    <GridViewColumn Header="CNIC" DisplayMemberBinding="{Binding BenCNIC}" />
+                                    <GridViewColumn Header="Cellphone" DisplayMemberBinding="{Binding BenNumber}" />
+                                    <GridViewColumn Header="Reg.Date" DisplayMemberBinding="{Binding CreatedDate}" />
+                                    <GridViewColumn Header="Action">
+                                        <GridViewColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <StackPanel Orientation="Horizontal" Margin="4" >
+                                                    <Button x:Name="BtnUpdate" Content="Update"
+        											
+                										Height="30"
+                										Click="BtnUpdate_Click"
+                										Margin="10,0,0,0"
+                										Command="{Binding DataContext.UpdateCommand, RelativeSource={RelativeSource AncestorType={x:Type ListView}}}" CommandParameter="{Binding}"/>
+                                                    <Button x:Name="BtnDelete" Content="Delete"
+        											
+                										Height="30"
+                										Margin="10,0,0,0"
+                										Command="{Binding DataContext.DeleteCommand, RelativeSource={RelativeSource AncestorType={x:Type ListView}}}" CommandParameter="{Binding}" />
+                                                </StackPanel>
+                                            </DataTemplate>
+                                        </GridViewColumn.CellTemplate>
+                                    </GridViewColumn>
+                                </GridView>
+                            </ListView.View>
+                        
+                    </ListView>
+                    
+                </Grid>
+
+                </Border>
+            </StackPanel>
+
+        
+    </StackPanel>
+</UserControl>

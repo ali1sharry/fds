@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="8b933e580bde411384defb7836a0462b" Name="Diagram1">
+        <EntityTypeShape EntityType="FDSModel.Beneficiary" Width="1.5" PointX="0.875" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="FDSModel.Donation" Width="1.5" PointX="4.875" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="FDSModel.Donor" Width="1.5" PointX="6" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FDSModel.FoodDistribution" Width="1.5" PointX="1.25" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="FDSModel.FoodStore" Width="1.5" PointX="3.375" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="FDSModel.sysdiagram" Width="1.5" PointX="8.125" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FDSModel.User" Width="1.5" PointX="6.75" PointY="7" IsExpanded="true" />
+        <AssociationConnector Association="FDSModel.FK_FoodDistribution_Beneficiaries" ManuallyRouted="false" />
+        <AssociationConnector Association="FDSModel.FK_Donations_Donations" ManuallyRouted="false" />
+        <AssociationConnector Association="FDSModel.FK_Donations_FoodStores" />
+        <AssociationConnector Association="FDSModel.FK_FoodDistribution_FoodStores" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

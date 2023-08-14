@@ -1,0 +1,234 @@
+﻿<UserControl x:Class="FDS.MVVM.View.DonationView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:FDS.MVVM.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <StackPanel>
+        <TextBlock Text="Donation"
+                   Foreground="White"
+                   FontSize="20"
+                   HorizontalAlignment="Left"
+                   Margin="0,0,0,10"/>
+        <StackPanel Orientation="Horizontal">
+            <Border Width="790"
+                    Margin="2">
+                <Border.Background>
+                    <LinearGradientBrush>
+                        <GradientStop Color="#7be9f6" Offset="0.0"/>
+                        <GradientStop Color="#f083da" Offset="1"/>
+                    </LinearGradientBrush>
+                </Border.Background>
+                <Grid Height="101"
+                      Margin="10,10,10,10">
+                    <Label Name="donname01"
+                           Content="Food"
+            			VerticalAlignment="top"
+            			HorizontalAlignment="Left"
+            			Margin="0,0,0,0"/>
+                    <ComboBox
+                        SelectedItem ="{Binding Adddona.FoodItem}"
+                        Name="danamecop01"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        Width="200"
+                        Margin="60,3,0,0">
+                        
+                        <ComboBoxItem Content="Rice 1KG"></ComboBoxItem>
+                        <ComboBoxItem Content="Wheat 1KG"></ComboBoxItem>
+                        <ComboBoxItem Content="Sugar 1KG"></ComboBoxItem>
+                        <ComboBoxItem Content="Friuts 1KG"></ComboBoxItem>
+                        <ComboBoxItem Content="Meat 1KG"></ComboBoxItem>
+                        <ComboBoxItem Content="Oil 1KG"></ComboBoxItem>
+                        <ComboBoxItem Content="Donation Box 5KG"></ComboBoxItem>
+                        <ComboBoxItem Content="Raw Vegitables 1KG"></ComboBoxItem>
+                    </ComboBox>
+                    <ComboBox
+                        Name="danamecop02"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                     
+                        Width="200"
+                        SelectedValue="{Binding Selectdon.FoodItem}"
+                        SelectedItem="{Binding Selectdon.FoodItem}"
+                        Visibility="Collapsed"
+                        Margin="60,0,0,0">
+
+                        <ComboBoxItem Content="Rice 1KG"></ComboBoxItem>
+                        <ComboBoxItem Content="Wheat 1KG"></ComboBoxItem>
+                        <ComboBoxItem Content="Sugar 1KG"></ComboBoxItem>
+                        <ComboBoxItem Content="Friuts 1KG"></ComboBoxItem>
+                        <ComboBoxItem Content="Meat 1KG"></ComboBoxItem>
+                        <ComboBoxItem Content="Oil 1KG"></ComboBoxItem>
+                        <ComboBoxItem Content="Donation Box 5KG"></ComboBoxItem>
+                        <ComboBoxItem Content="Raw Vegitables 1KG"></ComboBoxItem>
+                    </ComboBox>
+                    
+                    <Label Name="donqty01"
+                           Content="Quantity"
+            			VerticalAlignment="top"
+            			HorizontalAlignment="Left"
+            			Margin="0,44,0,0"/>
+                    <TextBox Name="daqty01"
+                        AcceptsReturn="True"     
+                         PreviewTextInput="daqty01_PreviewTextInput"
+
+                    	Text="{Binding Adddona.Quantity}"                      
+                    	Style="{StaticResource ModernForm}"
+                    	HorizontalAlignment="Left"
+                    	VerticalAlignment="Bottom"
+                        Margin="60,0,0,21"
+                    	Width="200"
+                           />
+                    <TextBox Name="daqty02"
+                        Visibility="Collapsed"
+                        PreviewTextInput="daqty01_PreviewTextInput"
+                        AcceptsReturn="True"     
+                    	Text="{Binding Selectdon.Quantity}"                      
+                    	Style="{StaticResource ModernForm}"
+                    	HorizontalAlignment="Left"
+                    	VerticalAlignment="Bottom"
+                        Margin="60,0,0,21"
+                    	Width="200"
+                           />
+                    <Label Name="donid01"
+                           Content="Donor"
+            			VerticalAlignment="top"
+            			HorizontalAlignment="Left"
+                           
+            			Margin="278,4,0,0"/>
+                    <ComboBox 
+                       ItemsSource="{Binding DonorrLoad}"
+                       DisplayMemberPath="DonorName"
+                        SelectedValuePath="DonorId"
+                        SelectionChanged="donoridcom1_SelectionChanged"
+                        SelectedValue="{Binding Adddona.DonorId, Mode=TwoWay}"      
+                        Name="donoridcom1"
+                        HorizontalAlignment="Left"
+                    	VerticalAlignment="Top"
+                        Margin="355,1,0,0"
+                    	Width="200"
+                        
+                        ></ComboBox>
+
+                    <ComboBox ItemsSource="{Binding DonorrLoad}"
+                        Name="donoridcom2"
+                        DisplayMemberPath="DonorName"
+                        SelectedValuePath="DonorId"
+                        SelectedValue="{Binding Selectdon.DonorId, Mode=TwoWay}"      
+                        Visibility="Collapsed"
+                        HorizontalAlignment="Left"
+                    	VerticalAlignment="Top"
+                        Margin="355,0,0,0"
+                    	Width="200"
+                        ></ComboBox>
+                    <Label Name="fsid01"
+                           Content="Store"
+            			VerticalAlignment="top"
+            			HorizontalAlignment="Left"
+                           
+            			Margin="278,46,0,0"/>
+                    <ComboBox ItemsSource="{Binding Fodstore}"
+                        Name="fsidcom01"
+                       DisplayMemberPath="StoreName"
+                        SelectedValuePath="StoreId"
+                        
+                        SelectedValue="{Binding Adddona.StoreId, Mode=TwoWay}"        
+                        Visibility="Visible"
+                        HorizontalAlignment="Left"
+                    	VerticalAlignment="Top"
+                        Margin="355,50,0,0"
+                    	Width="200"
+                        ></ComboBox>
+                    <ComboBox ItemsSource="{Binding Fodstore}"
+                        Name="fsidcom2"
+                        DisplayMemberPath="StoreName"
+                        SelectedValuePath="StoreId"
+                        SelectedValue="{Binding Selectdon.StoreId, Mode=TwoWay}"      
+                        Visibility="Collapsed"
+                        HorizontalAlignment="Left"
+                    	VerticalAlignment="Top"
+                        Margin="355,50,0,0"
+                    	Width="200"
+                        ></ComboBox>
+                    <TextBlock
+                    	VerticalAlignment="top"
+                        Name="link01"
+                        Visibility="Collapsed"
+                    	HorizontalAlignment="Left"
+                    	Margin="278,38,-278,-79" ><Hyperlink   NavigateUri="http://www.google.com"
+                    		Name="lstdon1"
+                    		Command="{Binding ListCommand}" ><Run Text="Donor Record"/></Hyperlink><Run Text=" "/><InlineUIContainer>
+                    	
+                    	</InlineUIContainer></TextBlock>
+                    <Button Name="donerbtn01"
+                            Command="{Binding AddDonCommand}"
+                            Click="donerbtn01_Click"
+                            Width="90"
+                            Content="Submit"
+                            Height="40"
+                            Margin="470,0,0,20"/>
+                    <Button Name="donerbtn02"
+                            Click="donerbtn02_Click"
+                            Visibility="Collapsed"
+                            Command="{Binding UpdateDonCommand}"
+                            Width="90"
+                            Content="Update"
+                            Height="40"
+                            Margin="470,0,0,20"/>
+                </Grid>
+                
+            </Border>
+
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
+
+
+            <Border Width="790"
+                    Margin="2">
+                <Border.Background>
+                    <LinearGradientBrush>
+                        <GradientStop Color="#7be9f6" Offset="0.0"/>
+                        <GradientStop Color="#f083da" Offset="1"/>
+                    </LinearGradientBrush>
+                </Border.Background>
+                <Grid Height="286">
+                    <ListView Background="Transparent"
+                              HorizontalAlignment="Left"
+                              VerticalAlignment="Bottom" Width="690" Height="276" 
+                              ItemsSource="{Binding Listdon}">
+                        <ListView.View>
+                            <GridView>
+
+                                <GridViewColumn Header="Food Item" DisplayMemberBinding="{Binding FoodItem}" />
+                                <GridViewColumn Header="Quantity" DisplayMemberBinding="{Binding Quantity }" />
+                                <GridViewColumn Header="Date" DisplayMemberBinding="{Binding CreatedDate }" />
+                                <GridViewColumn Header="Action">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <StackPanel Orientation="Horizontal" Margin="4">
+                                                <Button x:Name="BtnUpdate" Content="Update"
+        											Width="90"
+        											Height="30"
+                                                    Click="donoridcom1_Selected"
+        											Margin="10,0,0,0"
+        											Command="{Binding DataContext.UpdateCommand, RelativeSource={RelativeSource AncestorType={x:Type ListView}}}" CommandParameter="{Binding}"/>
+                                                <Button x:Name="BtnDelete" Content="Delete"
+        											Width="90"
+        											Height="30"
+        											Margin="10,0,0,0"
+        											Command="{Binding DataContext.DeleteCommand, RelativeSource={RelativeSource AncestorType={x:Type ListView}}}" CommandParameter="{Binding}" />
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </Grid>
+            </Border>
+        </StackPanel>
+    </StackPanel>
+</UserControl>

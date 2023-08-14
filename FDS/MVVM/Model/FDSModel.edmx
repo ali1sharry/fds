@@ -1,0 +1,445 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="FDSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Beneficiaries">
+          <Key>
+            <PropertyRef Name="BenId" />
+          </Key>
+          <Property Name="BenId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BenName" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="BenType" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="BenCNIC" Type="bigint" Nullable="false" />
+          <Property Name="BenAddress" Type="varchar" MaxLength="350" Nullable="false" />
+          <Property Name="BenNumber" Type="bigint" Nullable="false" />
+          <Property Name="CreatedDate" Type="date" />
+        </EntityType>
+        <EntityType Name="Donations">
+          <Key>
+            <PropertyRef Name="DonationId" />
+          </Key>
+          <Property Name="DonationId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DonorId" Type="int" Nullable="false" />
+          <Property Name="FoodItem" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Quantity" Type="int" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="StoreId" Type="int" />
+        </EntityType>
+        <EntityType Name="Donors">
+          <Key>
+            <PropertyRef Name="DonorId" />
+          </Key>
+          <Property Name="DonorId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DonorName" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="DonorAdress" Type="varchar" MaxLength="550" Nullable="false" />
+          <Property Name="DonorNumber" Type="bigint" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="DonorCNIC" Type="bigint" />
+        </EntityType>
+        <EntityType Name="FoodDistribution">
+          <Key>
+            <PropertyRef Name="DistributionId" />
+          </Key>
+          <Property Name="DistributionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BenId" Type="int" Nullable="false" />
+          <Property Name="FoodItem" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="DisDate" Type="date" />
+          <Property Name="DisQuantity" Type="int" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="StoreId" Type="int" />
+        </EntityType>
+        <EntityType Name="FoodStores">
+          <Key>
+            <PropertyRef Name="StoreId" />
+          </Key>
+          <Property Name="StoreId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StoreName" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="StoreCapacity" Type="int" Nullable="false" />
+          <Property Name="StoreLocation" Type="varchar" MaxLength="255" />
+          <Property Name="CreateBy" Type="int" />
+          <Property Name="Available" Type="int" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FullName" Type="varchar" MaxLength="255" />
+          <Property Name="Username" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Address" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="Cellphone" Type="bigint" Nullable="false" />
+          <Property Name="Createdby" Type="int" Nullable="false" />
+          <Property Name="Role" Type="int" />
+        </EntityType>
+        <Association Name="FK_Donations_Donations">
+          <End Role="Donors" Type="Self.Donors" Multiplicity="1" />
+          <End Role="Donations" Type="Self.Donations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Donors">
+              <PropertyRef Name="DonorId" />
+            </Principal>
+            <Dependent Role="Donations">
+              <PropertyRef Name="DonorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Donations_FoodStores">
+          <End Role="FoodStores" Type="Self.FoodStores" Multiplicity="0..1" />
+          <End Role="Donations" Type="Self.Donations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FoodStores">
+              <PropertyRef Name="StoreId" />
+            </Principal>
+            <Dependent Role="Donations">
+              <PropertyRef Name="StoreId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FoodDistribution_Beneficiaries">
+          <End Role="Beneficiaries" Type="Self.Beneficiaries" Multiplicity="1" />
+          <End Role="FoodDistribution" Type="Self.FoodDistribution" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Beneficiaries">
+              <PropertyRef Name="BenId" />
+            </Principal>
+            <Dependent Role="FoodDistribution">
+              <PropertyRef Name="BenId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FoodDistribution_FoodStores">
+          <End Role="FoodStores" Type="Self.FoodStores" Multiplicity="0..1" />
+          <End Role="FoodDistribution" Type="Self.FoodDistribution" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FoodStores">
+              <PropertyRef Name="StoreId" />
+            </Principal>
+            <Dependent Role="FoodDistribution">
+              <PropertyRef Name="StoreId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="FDSModelStoreContainer">
+          <EntitySet Name="Beneficiaries" EntityType="Self.Beneficiaries" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Donations" EntityType="Self.Donations" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Donors" EntityType="Self.Donors" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FoodDistribution" EntityType="Self.FoodDistribution" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FoodStores" EntityType="Self.FoodStores" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Donations_Donations" Association="Self.FK_Donations_Donations">
+            <End Role="Donors" EntitySet="Donors" />
+            <End Role="Donations" EntitySet="Donations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Donations_FoodStores" Association="Self.FK_Donations_FoodStores">
+            <End Role="FoodStores" EntitySet="FoodStores" />
+            <End Role="Donations" EntitySet="Donations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FoodDistribution_Beneficiaries" Association="Self.FK_FoodDistribution_Beneficiaries">
+            <End Role="Beneficiaries" EntitySet="Beneficiaries" />
+            <End Role="FoodDistribution" EntitySet="FoodDistribution" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FoodDistribution_FoodStores" Association="Self.FK_FoodDistribution_FoodStores">
+            <End Role="FoodStores" EntitySet="FoodStores" />
+            <End Role="FoodDistribution" EntitySet="FoodDistribution" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="FDSModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Beneficiary">
+          <Key>
+            <PropertyRef Name="BenId" />
+          </Key>
+          <Property Name="BenId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BenName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="BenType" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="BenCNIC" Type="Int64" Nullable="false" />
+          <Property Name="BenAddress" Type="String" MaxLength="350" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="BenNumber" Type="Int64" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="FoodDistributions" Relationship="Self.FK_FoodDistribution_Beneficiaries" FromRole="Beneficiaries" ToRole="FoodDistribution" />
+        </EntityType>
+        <EntityType Name="Donation">
+          <Key>
+            <PropertyRef Name="DonationId" />
+          </Key>
+          <Property Name="DonationId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DonorId" Type="Int32" Nullable="false" />
+          <Property Name="FoodItem" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Quantity" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Donor" Relationship="Self.FK_Donations_Donations" FromRole="Donations" ToRole="Donors" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="StoreId" Type="Int32" />
+          <NavigationProperty Name="FoodStore" Relationship="FDSModel.FK_Donations_FoodStores" FromRole="Donation" ToRole="FoodStore" />
+        </EntityType>
+        <EntityType Name="Donor">
+          <Key>
+            <PropertyRef Name="DonorId" />
+          </Key>
+          <Property Name="DonorId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DonorName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DonorAdress" Type="String" MaxLength="550" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DonorNumber" Type="Int64" Nullable="false" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <NavigationProperty Name="Donations" Relationship="Self.FK_Donations_Donations" FromRole="Donors" ToRole="Donations" />
+          <Property Name="DonorCNIC" Type="Int64" />
+        </EntityType>
+        <EntityType Name="FoodDistribution">
+          <Key>
+            <PropertyRef Name="DistributionId" />
+          </Key>
+          <Property Name="DistributionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BenId" Type="Int32" Nullable="false" />
+          <Property Name="FoodItem" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DisDate" Type="DateTime" Precision="0" />
+          <Property Name="DisQuantity" Type="Int32" />
+          <NavigationProperty Name="Beneficiary" Relationship="Self.FK_FoodDistribution_Beneficiaries" FromRole="FoodDistribution" ToRole="Beneficiaries" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="StoreId" Type="Int32" />
+          <NavigationProperty Name="FoodStore" Relationship="FDSModel.FK_FoodDistribution_FoodStores" FromRole="FoodDistribution" ToRole="FoodStore" />
+        </EntityType>
+        <EntityType Name="FoodStore">
+          <Key>
+            <PropertyRef Name="StoreId" />
+          </Key>
+          <Property Name="StoreId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StoreName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="StoreCapacity" Type="Int32" Nullable="false" />
+          <Property Name="StoreLocation" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="CreateBy" Type="Int32" />
+          <Property Name="Available" Type="Int32" />
+          <NavigationProperty Name="Donations" Relationship="FDSModel.FK_Donations_FoodStores" FromRole="FoodStore" ToRole="Donation" />
+          <NavigationProperty Name="FoodDistributions" Relationship="FDSModel.FK_FoodDistribution_FoodStores" FromRole="FoodStore" ToRole="FoodDistribution" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FullName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Username" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Cellphone" Type="Int64" Nullable="false" />
+          <Property Name="Createdby" Type="Int32" Nullable="false" />
+          <Property Name="Role" Type="Int32" />
+        </EntityType>
+        <Association Name="FK_FoodDistribution_Beneficiaries">
+          <End Role="Beneficiaries" Type="Self.Beneficiary" Multiplicity="1" />
+          <End Role="FoodDistribution" Type="Self.FoodDistribution" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Beneficiaries">
+              <PropertyRef Name="BenId" />
+            </Principal>
+            <Dependent Role="FoodDistribution">
+              <PropertyRef Name="BenId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Donations_Donations">
+          <End Role="Donors" Type="Self.Donor" Multiplicity="1" />
+          <End Role="Donations" Type="Self.Donation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Donors">
+              <PropertyRef Name="DonorId" />
+            </Principal>
+            <Dependent Role="Donations">
+              <PropertyRef Name="DonorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="FDSEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Beneficiaries" EntityType="Self.Beneficiary" />
+          <EntitySet Name="Donations" EntityType="Self.Donation" />
+          <EntitySet Name="Donors" EntityType="Self.Donor" />
+          <EntitySet Name="FoodDistributions" EntityType="Self.FoodDistribution" />
+          <EntitySet Name="FoodStores" EntityType="Self.FoodStore" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <AssociationSet Name="FK_FoodDistribution_Beneficiaries" Association="Self.FK_FoodDistribution_Beneficiaries">
+            <End Role="Beneficiaries" EntitySet="Beneficiaries" />
+            <End Role="FoodDistribution" EntitySet="FoodDistributions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Donations_Donations" Association="Self.FK_Donations_Donations">
+            <End Role="Donors" EntitySet="Donors" />
+            <End Role="Donations" EntitySet="Donations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Donations_FoodStores" Association="FDSModel.FK_Donations_FoodStores">
+            <End Role="FoodStore" EntitySet="FoodStores" />
+            <End Role="Donation" EntitySet="Donations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FoodDistribution_FoodStores" Association="FDSModel.FK_FoodDistribution_FoodStores">
+            <End Role="FoodStore" EntitySet="FoodStores" />
+            <End Role="FoodDistribution" EntitySet="FoodDistributions" />
+          </AssociationSet>
+        </EntityContainer>
+        <Association Name="FK_Donations_FoodStores">
+          <End Type="FDSModel.FoodStore" Role="FoodStore" Multiplicity="0..1" />
+          <End Type="FDSModel.Donation" Role="Donation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FoodStore">
+              <PropertyRef Name="StoreId" />
+            </Principal>
+            <Dependent Role="Donation">
+              <PropertyRef Name="StoreId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FoodDistribution_FoodStores">
+          <End Type="FDSModel.FoodStore" Role="FoodStore" Multiplicity="0..1" />
+          <End Type="FDSModel.FoodDistribution" Role="FoodDistribution" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FoodStore">
+              <PropertyRef Name="StoreId" />
+            </Principal>
+            <Dependent Role="FoodDistribution">
+              <PropertyRef Name="StoreId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="FDSModelStoreContainer" CdmEntityContainer="FDSEntities">
+          <EntitySetMapping Name="Beneficiaries">
+            <EntityTypeMapping TypeName="FDSModel.Beneficiary">
+              <MappingFragment StoreEntitySet="Beneficiaries">
+                <ScalarProperty Name="BenId" ColumnName="BenId" />
+                <ScalarProperty Name="BenName" ColumnName="BenName" />
+                <ScalarProperty Name="BenType" ColumnName="BenType" />
+                <ScalarProperty Name="BenCNIC" ColumnName="BenCNIC" />
+                <ScalarProperty Name="BenAddress" ColumnName="BenAddress" />
+                <ScalarProperty Name="BenNumber" ColumnName="BenNumber" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Donations">
+            <EntityTypeMapping TypeName="FDSModel.Donation">
+              <MappingFragment StoreEntitySet="Donations">
+                <ScalarProperty Name="StoreId" ColumnName="StoreId" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="DonationId" ColumnName="DonationId" />
+                <ScalarProperty Name="DonorId" ColumnName="DonorId" />
+                <ScalarProperty Name="FoodItem" ColumnName="FoodItem" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Donors">
+            <EntityTypeMapping TypeName="FDSModel.Donor">
+              <MappingFragment StoreEntitySet="Donors">
+                <ScalarProperty Name="DonorCNIC" ColumnName="DonorCNIC" />
+                <ScalarProperty Name="DonorId" ColumnName="DonorId" />
+                <ScalarProperty Name="DonorName" ColumnName="DonorName" />
+                <ScalarProperty Name="DonorAdress" ColumnName="DonorAdress" />
+                <ScalarProperty Name="DonorNumber" ColumnName="DonorNumber" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FoodDistributions">
+            <EntityTypeMapping TypeName="FDSModel.FoodDistribution">
+              <MappingFragment StoreEntitySet="FoodDistribution">
+                <ScalarProperty Name="StoreId" ColumnName="StoreId" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="DistributionId" ColumnName="DistributionId" />
+                <ScalarProperty Name="BenId" ColumnName="BenId" />
+                <ScalarProperty Name="FoodItem" ColumnName="FoodItem" />
+                <ScalarProperty Name="DisDate" ColumnName="DisDate" />
+                <ScalarProperty Name="DisQuantity" ColumnName="DisQuantity" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FoodStores">
+            <EntityTypeMapping TypeName="FDSModel.FoodStore">
+              <MappingFragment StoreEntitySet="FoodStores">
+                <ScalarProperty Name="Available" ColumnName="Available" />
+                <ScalarProperty Name="StoreId" ColumnName="StoreId" />
+                <ScalarProperty Name="StoreName" ColumnName="StoreName" />
+                <ScalarProperty Name="StoreCapacity" ColumnName="StoreCapacity" />
+                <ScalarProperty Name="StoreLocation" ColumnName="StoreLocation" />
+                <ScalarProperty Name="CreateBy" ColumnName="CreateBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="FDSModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="FDSModel.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Cellphone" ColumnName="Cellphone" />
+                <ScalarProperty Name="Createdby" ColumnName="Createdby" />
+                <ScalarProperty Name="Role" ColumnName="Role" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

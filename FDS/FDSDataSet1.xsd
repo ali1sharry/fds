@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="FDSDataSet1" targetNamespace="http://tempuri.org/FDSDataSet1.xsd" xmlns:mstns="http://tempuri.org/FDSDataSet1.xsd" xmlns="http://tempuri.org/FDSDataSet1.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="FDSConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="FDSConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.FDS.Properties.Settings.GlobalReference.Default.FDSConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="FoodStoreWholeTableAdapter" GeneratorDataComponentClassName="FoodStoreWholeTableAdapter" Name="FoodStoreWhole" UserDataComponentName="FoodStoreWholeTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="FDSConnectionString (Settings)" DbObjectName="FDS.dbo.FoodStoreWhole" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT StoreId, StoreName, StoreCapacity, Available, OcccupiedSpace FROM dbo.FoodStoreWhole</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="StoreId" DataSetColumn="StoreId" />
+              <Mapping SourceColumn="StoreName" DataSetColumn="StoreName" />
+              <Mapping SourceColumn="StoreCapacity" DataSetColumn="StoreCapacity" />
+              <Mapping SourceColumn="Available" DataSetColumn="Available" />
+              <Mapping SourceColumn="OcccupiedSpace" DataSetColumn="OcccupiedSpace" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="FoodTypeWiseTableAdapter" GeneratorDataComponentClassName="FoodTypeWiseTableAdapter" Name="FoodTypeWise" UserDataComponentName="FoodTypeWiseTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="FDSConnectionString (Settings)" DbObjectName="FDS.dbo.FoodTypeWise" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT StoreName, FoodItem, TotalDonatedQuantity, TotalDistributedQuantity, Available, AvailableSpaceAfter FROM FoodTypeWise</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="StoreName" DataSetColumn="StoreName" />
+              <Mapping SourceColumn="FoodItem" DataSetColumn="FoodItem" />
+              <Mapping SourceColumn="TotalDonatedQuantity" DataSetColumn="TotalDonatedQuantity" />
+              <Mapping SourceColumn="TotalDistributedQuantity" DataSetColumn="TotalDistributedQuantity" />
+              <Mapping SourceColumn="Available" DataSetColumn="Available" />
+              <Mapping SourceColumn="AvailableSpaceAfter" DataSetColumn="AvailableSpaceAfter" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="FDSDataSet1" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="FDSDataSet1" msprop:Generator_UserDSName="FDSDataSet1">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="FoodStoreWhole" msprop:Generator_TableClassName="FoodStoreWholeDataTable" msprop:Generator_TableVarName="tableFoodStoreWhole" msprop:Generator_TablePropName="FoodStoreWhole" msprop:Generator_RowDeletingName="FoodStoreWholeRowDeleting" msprop:Generator_RowChangingName="FoodStoreWholeRowChanging" msprop:Generator_RowEvHandlerName="FoodStoreWholeRowChangeEventHandler" msprop:Generator_RowDeletedName="FoodStoreWholeRowDeleted" msprop:Generator_UserTableName="FoodStoreWhole" msprop:Generator_RowChangedName="FoodStoreWholeRowChanged" msprop:Generator_RowEvArgName="FoodStoreWholeRowChangeEvent" msprop:Generator_RowClassName="FoodStoreWholeRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="StoreId" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnStoreId" msprop:Generator_ColumnPropNameInRow="StoreId" msprop:Generator_ColumnPropNameInTable="StoreIdColumn" msprop:Generator_UserColumnName="StoreId" type="xs:int" />
+              <xs:element name="StoreName" msprop:Generator_ColumnVarNameInTable="columnStoreName" msprop:Generator_ColumnPropNameInRow="StoreName" msprop:Generator_ColumnPropNameInTable="StoreNameColumn" msprop:Generator_UserColumnName="StoreName">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="StoreCapacity" msprop:Generator_ColumnVarNameInTable="columnStoreCapacity" msprop:Generator_ColumnPropNameInRow="StoreCapacity" msprop:Generator_ColumnPropNameInTable="StoreCapacityColumn" msprop:Generator_UserColumnName="StoreCapacity" type="xs:int" />
+              <xs:element name="Available" msprop:Generator_ColumnVarNameInTable="columnAvailable" msprop:Generator_ColumnPropNameInRow="Available" msprop:Generator_ColumnPropNameInTable="AvailableColumn" msprop:Generator_UserColumnName="Available" type="xs:int" minOccurs="0" />
+              <xs:element name="OcccupiedSpace" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnOcccupiedSpace" msprop:Generator_ColumnPropNameInRow="OcccupiedSpace" msprop:Generator_ColumnPropNameInTable="OcccupiedSpaceColumn" msprop:Generator_UserColumnName="OcccupiedSpace" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="FoodTypeWise" msprop:Generator_TableClassName="FoodTypeWiseDataTable" msprop:Generator_TableVarName="tableFoodTypeWise" msprop:Generator_TablePropName="FoodTypeWise" msprop:Generator_RowDeletingName="FoodTypeWiseRowDeleting" msprop:Generator_RowChangingName="FoodTypeWiseRowChanging" msprop:Generator_RowEvHandlerName="FoodTypeWiseRowChangeEventHandler" msprop:Generator_RowDeletedName="FoodTypeWiseRowDeleted" msprop:Generator_UserTableName="FoodTypeWise" msprop:Generator_RowChangedName="FoodTypeWiseRowChanged" msprop:Generator_RowEvArgName="FoodTypeWiseRowChangeEvent" msprop:Generator_RowClassName="FoodTypeWiseRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="StoreName" msprop:Generator_ColumnVarNameInTable="columnStoreName" msprop:Generator_ColumnPropNameInRow="StoreName" msprop:Generator_ColumnPropNameInTable="StoreNameColumn" msprop:Generator_UserColumnName="StoreName">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="FoodItem" msprop:Generator_ColumnVarNameInTable="columnFoodItem" msprop:Generator_ColumnPropNameInRow="FoodItem" msprop:Generator_ColumnPropNameInTable="FoodItemColumn" msprop:Generator_UserColumnName="FoodItem" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="TotalDonatedQuantity" msprop:Generator_ColumnVarNameInTable="columnTotalDonatedQuantity" msprop:Generator_ColumnPropNameInRow="TotalDonatedQuantity" msprop:Generator_ColumnPropNameInTable="TotalDonatedQuantityColumn" msprop:Generator_UserColumnName="TotalDonatedQuantity" type="xs:int" minOccurs="0" />
+              <xs:element name="TotalDistributedQuantity" msprop:Generator_ColumnVarNameInTable="columnTotalDistributedQuantity" msprop:Generator_ColumnPropNameInRow="TotalDistributedQuantity" msprop:Generator_ColumnPropNameInTable="TotalDistributedQuantityColumn" msprop:Generator_UserColumnName="TotalDistributedQuantity" type="xs:int" minOccurs="0" />
+              <xs:element name="Available" msprop:Generator_ColumnVarNameInTable="columnAvailable" msprop:Generator_ColumnPropNameInRow="Available" msprop:Generator_ColumnPropNameInTable="AvailableColumn" msprop:Generator_UserColumnName="Available" type="xs:int" minOccurs="0" />
+              <xs:element name="AvailableSpaceAfter" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnAvailableSpaceAfter" msprop:Generator_ColumnPropNameInRow="AvailableSpaceAfter" msprop:Generator_ColumnPropNameInTable="AvailableSpaceAfterColumn" msprop:Generator_UserColumnName="AvailableSpaceAfter" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:FoodStoreWhole" />
+      <xs:field xpath="mstns:StoreId" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

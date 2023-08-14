@@ -1,0 +1,409 @@
+﻿<UserControl x:Class="FDS.MVVM.View.UserView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:FDS.MVVM.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800"
+             Background="Transparent">
+
+    <StackPanel Orientation="Horizontal">
+
+        <Border>
+            <Border.Background>
+                <LinearGradientBrush>
+                    <GradientStop Color="#7be9f6" Offset="0.0"/>
+                    <GradientStop Color="#f083da" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.Background>
+            <TabControl 
+                 Background="Transparent" 
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Stretch" Width="798"         
+                       >
+
+
+                <TabItem x:Name="New" 
+        		Background="Transparent"
+           		Header="New"
+                
+        		Foreground="Black"
+                FontSize="14"
+                VerticalAlignment="Center"         
+        		HorizontalAlignment="Left"
+        		Margin="0,0,0,0"
+        		FontWeight="SemiBold"         
+        		FontFamily="helvetica"         
+        		Width="100"
+        		Height="50"                 
+        		BorderThickness="0" BorderBrush="{x:Null}"
+                     >
+
+                    <Grid >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="43*"/>
+                            <ColumnDefinition Width="230*"/>
+                            <ColumnDefinition Width="525*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="67*"/>
+                            <RowDefinition Height="61*"/>
+                        </Grid.RowDefinitions>
+                        <Label x:Name="FullName0" Foreground="White"
+        				Content="Full Name"
+        				VerticalAlignment="Center"
+        				HorizontalAlignment="Left"
+        				Margin="38,18,0,160"
+        				Grid.Column="0" Grid.ColumnSpan="2"
+                       />
+                        <TextBox Width="250"
+                         
+        				Text="{Binding NewUser.FullName}" 
+                         PreviewTextInput="FN01_PreviewTextInput"    
+        				x:Name="FN01"     
+        				Height="40"
+        				VerticalAlignment="Center"
+        				HorizontalAlignment="Left"
+        				Margin="10,38,0,128"
+        				Style="{StaticResource ModernForm}" Grid.ColumnSpan="2"/>
+                        <Label x:Name="UserName" Foreground="White"
+        				Content="Username"
+        				VerticalAlignment="Center"
+        				HorizontalAlignment="Center"
+        				Margin="34,19,415,161"
+        				Grid.Column="2" RenderTransformOrigin="0.444,0.448"
+                       />
+                        <TextBox Width="250"
+        				x:Name="UN01"
+        				Text="{Binding NewUser.Username }"          
+        				Height="40"
+        				VerticalAlignment="Center"
+        				HorizontalAlignment="Center"
+        				Margin="6,38,269,128"
+        				Style="{StaticResource ModernForm}" Grid.Column="2"/>
+                        <Label x:Name="Email" Foreground="White"
+        				Content="Email"
+        				VerticalAlignment="Center"
+        				HorizontalAlignment="Left"
+        				Margin="38,84,0,96"
+        				Grid.Column="0" RenderTransformOrigin="0.444,0.448" Grid.ColumnSpan="2"
+                       />
+                        <TextBox Width="250"
+        				x:Name="E01" 
+        				 Text="{Binding NewUser.Email}" 
+                         
+                         
+        				Height="40"
+        				VerticalAlignment="Center"
+        				HorizontalAlignment="Center"
+        				Margin="11,102,12,64"
+        				Style="{StaticResource ModernForm}" Grid.ColumnSpan="2"/>
+                        <Label x:Name="Password" Foreground="White"
+
+        				Content="Password"
+        				VerticalAlignment="Center"
+        				HorizontalAlignment="Center"
+        				Margin="33,86,422,94"
+        				Grid.Column="2" RenderTransformOrigin="0.444,0.448"
+                       />
+                        <TextBox Width="250"
+        				Text="{Binding NewUser.Password }"          
+        				x:Name="P01"     
+        				Height="40"
+        				VerticalAlignment="Center"
+        				HorizontalAlignment="Center"
+        				Margin="6,102,269,64"
+        				Style="{StaticResource ModernForm}" Grid.Column="2"/>
+                        <Label x:Name="CellPhone" Foreground="White"
+        				Content="Cellphone"
+        				VerticalAlignment="Center"
+        				HorizontalAlignment="Center"
+        				Margin="38,148,161,30"
+        				Grid.Column="0" RenderTransformOrigin="0.444,0.448" Grid.ColumnSpan="2"
+                       />
+                        <TextBox
+        				Text="{Binding NewUser.Cellphone}"         
+        				x:Name="CP01" 
+                        MaxLength="11"
+        			    PreviewTextInput="CP01_PreviewTextInput"
+        				VerticalAlignment="Center"
+        				HorizontalAlignment="Center"
+        				Margin="11,170,12,184"
+        				Style="{StaticResource ModernForm}" 
+                        RenderTransformOrigin="0.492,0.475"
+                        Grid.RowSpan="2" Grid.ColumnSpan="2"/>
+                        <Label x:Name="Address" Foreground="White"
+        				Content="Address"
+        				VerticalAlignment="Center"
+        				HorizontalAlignment="Center"
+        				Margin="33,148,430,30"
+        				Grid.Column="2" RenderTransformOrigin="0.444,0.448"
+                       />
+                        <TextBox
+        				x:Name="A01"
+        				Text="{Binding NewUser.Address}"
+        				VerticalAlignment="Center"
+        				HorizontalAlignment="Center"
+        				Margin="27,172,291,0"
+        				TextWrapping="Wrap"
+        				AcceptsReturn="True"
+        				VerticalScrollBarVisibility="Visible"
+        				Style="{StaticResource ModernForm}" Grid.Column="2"/>
+                        <Label x:Name="Role" Foreground="White"
+        				Content="Role"
+        				VerticalAlignment="Center"
+        				HorizontalAlignment="Center"
+        				Margin="38,12,197,148"
+        				Grid.Column="0" RenderTransformOrigin="0.444,0.448" Grid.Row="1" Grid.ColumnSpan="2"
+                       />
+                        <ComboBox x:Name="Role1"
+        				SelectedIndex ="{Binding NewUser.Role }"
+        				Margin="39,40,34,118"
+        				VerticalAlignment="Center"
+        				HorizontalAlignment="Center"
+        				Width="200"
+        				Height="30"
+        				Background="Transparent" Grid.Row="1"
+        				ScrollViewer.CanContentScroll="True" Grid.ColumnSpan="2">
+                            <ComboBoxItem x:Name="admin"   Content="Administrator"/>
+                            <ComboBoxItem x:Name="employee"   Content="Employee"/>
+                        </ComboBox>
+
+                        <Button Content="Register" 
+        				Width="167"
+                        Command="{Binding  AddUserCommand}"
+                        Name="btnsb01"    
+        				Height="34"
+                        Click="Button_Click"
+        				VerticalAlignment="Center"
+        				HorizontalAlignment="Center"
+        				Foreground="AliceBlue"
+        				
+                        Margin="36,35,322,118" 
+                        BorderThickness="0" 
+                        FontFamily="Yu Gothic UI Semibold"
+                        RenderTransformOrigin="0.5,0.5" 
+                        Grid.Row="1"  Grid.Column="2"
+                            />
+                    </Grid>
+
+                </TabItem>
+                <TabItem x:Name="List"
+        		Header="User's List"
+        		Foreground="Black"
+                Background="Transparent"         
+                FontSize="14"
+                VerticalAlignment="Top"         
+        		HorizontalAlignment="Left"
+        		Margin="0,0,0,0"
+        		FontWeight="SemiBold"         
+        		FontFamily="helvetica"         
+        		Width="100"
+        		Height="50"                 
+        		BorderThickness="0" BorderBrush="{x:Null}">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="39*"/>
+                            <ColumnDefinition Width="361*"/>
+                        </Grid.ColumnDefinitions>
+                        <ListView ItemsSource="{Binding FirstUser}" x:Name="Userlist" HorizontalAlignment="Left"
+        				Margin="0,4,0,16"
+        				Width="700" Grid.ColumnSpan="2" >
+                            <ListView.View>
+                                <GridView>
+                                    <GridViewColumn Header="Username" DisplayMemberBinding="{Binding Username}"/>
+                                    <GridViewColumn Header="Password" DisplayMemberBinding="{Binding Password}"/>
+                                    <GridViewColumn Header="Email" DisplayMemberBinding="{Binding Email}"/>
+                                    <GridViewColumn Header="Full Name" DisplayMemberBinding="{Binding FullName}"/>
+                                    <GridViewColumn Header="Address" DisplayMemberBinding="{Binding Address}"/>
+                                    <GridViewColumn Header="Cellphone" DisplayMemberBinding="{Binding Cellphone}"/>
+                                    
+                                    <GridViewColumn Header="Action">
+                                        <GridViewColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <StackPanel Orientation="Horizontal" Margin="4">
+                                                    <Button x:Name="BtnUpdate" Content="Update"
+        											Width="90"
+        											Height="30"
+        											Margin="10,0,0,0"
+        											Command="{Binding DataContext.UpdateCommand, RelativeSource={RelativeSource AncestorType={x:Type ListView}}}" CommandParameter="{Binding}"/>
+                                                    <Button x:Name="BtnDelete" Content="Delete"
+        											Width="90"
+        											Height="30"
+        											Margin="10,0,0,0"
+        											Command="{Binding DataContext.DeleteCommand, RelativeSource={RelativeSource AncestorType={x:Type ListView}}}" CommandParameter="{Binding}" />
+                                                </StackPanel>
+                                            </DataTemplate>
+                                        </GridViewColumn.CellTemplate>
+                                    </GridViewColumn>
+                                </GridView>
+                            </ListView.View>
+                        </ListView>
+                    </Grid>
+                </TabItem>
+
+                <TabItem x:Name="Update01"
+        		Header="User Update"
+                Foreground="Black"
+                Background="Transparent"
+                         
+                FontSize="14"
+                VerticalAlignment="Center"         
+        		HorizontalAlignment="Left"
+        		Margin="0,0,0,0"
+        		FontWeight="SemiBold"         
+        		FontFamily="helvetica"         
+        		Width="100"
+        		Height="50"                 
+        		BorderThickness="0" BorderBrush="{x:Null}">
+
+                    <Grid RenderTransformOrigin="0.494,0.522">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0*"/>
+                            <ColumnDefinition Width="0*"/>
+                            <ColumnDefinition Width="3*"/>
+                            <ColumnDefinition Width="85*"/>
+                            <ColumnDefinition Width="0*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="67*"/>
+                            <RowDefinition Height="61*"/>
+                        </Grid.RowDefinitions>
+                        <Label x:Name="FullName01"
+        				Content="Full Name"
+        				VerticalAlignment="Center"
+        				HorizontalAlignment="Left"
+        				Margin="0,20,0,161"
+        				Grid.Column="3" Height="24" Width="72"
+                       />
+                        <TextBox Width="250"
+                                 Name="UFN02"
+                        Text="{Binding SelectedUser.FullName}"       
+        				  PreviewTextInput="FN01_PreviewTextInput"   
+        				Height="40"
+        				VerticalAlignment="Center"
+        				HorizontalAlignment="Left"
+        				Margin="1,38,0,127"
+        				Style="{StaticResource ModernForm}" Grid.ColumnSpan="4"/>
+                        <Label x:Name="UserName01"
+        				Content="Username"
+        				VerticalAlignment="Center"
+        				HorizontalAlignment="Center"
+        				Margin="307,20,386,161"
+        				Grid.Column="3" RenderTransformOrigin="0.444,0.448" Height="24" Width="72"
+                       />
+                        <TextBox Width="250"
+                                 Name="UUN02"
+                        Text="{Binding SelectedUser.Username}"     
+        			    IsReadOnly="True"  
+                        ToolTip="Can't Change Username"
+        				Height="40"
+        				VerticalAlignment="Center"
+        				HorizontalAlignment="Center"
+        				Margin="279,38,236,127"
+        				Style="{StaticResource ModernForm}" Grid.Column="3"/>
+
+                        <Label x:Name="Email01"
+        				Content="Email"
+        				VerticalAlignment="Center"
+        				HorizontalAlignment="Left"
+        				Margin="3,84,0,97"
+        				Grid.Column="3" RenderTransformOrigin="0.444,0.448" Height="24" Width="62"
+                       />
+                        <TextBox Width="250"
+                        Text="{Binding SelectedUser.Email}"     
+        				x:Name="E02"     
+        				Height="40"
+        				VerticalAlignment="Center"
+        				HorizontalAlignment="Center"
+        				Margin="3,102,539,63"
+        				Style="{StaticResource ModernForm}" Grid.Column="1" Grid.ColumnSpan="3"/>
+                        <Label x:Name="Password01"
+        				Content="Password"
+        				VerticalAlignment="Center"
+        				HorizontalAlignment="Center"
+        				Margin="309,86,388,95"
+        				Grid.Column="3" RenderTransformOrigin="0.444,0.448" Height="24" Width="68"
+                       />
+                        <TextBox Width="250"
+                        Text="{Binding SelectedUser.Password}"     
+        				x:Name="P02"     
+        				Height="40"
+        				VerticalAlignment="Center"
+        				HorizontalAlignment="Center"
+        				Margin="279,102,236,63"
+        				Style="{StaticResource ModernForm}" Grid.Column="3"/>
+                        <Label x:Name="CellPhone01"
+        				Content="Cellphone"
+        				VerticalAlignment="Center"
+        				HorizontalAlignment="Center"
+        				Margin="5,150,688,31"
+        				Grid.Column="3" RenderTransformOrigin="0.444,0.448" Height="24" Width="72"
+                       />
+                        <TextBox Width="250"
+                                 Name="UCP02"
+                        Text="{Binding SelectedUser.Cellphone}"
+                        MaxLength="11"        
+        				PreviewTextInput="CP01_PreviewTextInput"  
+        				Height="40"
+        				VerticalAlignment="Center"
+        				HorizontalAlignment="Center"
+        				Margin="3,169,539,183"
+        				Style="{StaticResource ModernForm}" RenderTransformOrigin="0.492,0.475" Grid.RowSpan="2" Grid.Column="1" Grid.ColumnSpan="3"/>
+                        <Label x:Name="Address01"
+        				Content="Address"
+        				VerticalAlignment="Center"
+        				HorizontalAlignment="Center"
+        				Margin="311,150,394,31"
+        				Grid.Column="3" RenderTransformOrigin="0.444,0.448" Height="24" Width="60"
+                       />
+                        <TextBox
+                            Name="UAd02"        				
+                        Text="{Binding SelectedUser.Address}"
+        				VerticalAlignment="Center"
+        				HorizontalAlignment="Center"
+        				Margin="307,174,258,183"
+        				TextWrapping="Wrap"
+        				AcceptsReturn="True"
+        				VerticalScrollBarVisibility="Visible"
+        				Style="{StaticResource ModernForm}" Grid.Column="3" Height="35" Width="200" Grid.RowSpan="2"/>
+                        <Label x:Name="Role01"
+        				Content="Role"
+        				VerticalAlignment="Center"
+        				HorizontalAlignment="Center"
+        				Margin="-79,13,638,150"
+        				Grid.Column="3" RenderTransformOrigin="0.444,0.448" Grid.Row="1" Height="24" Width="36"
+                       />
+                        <ComboBox 
+                        Name="URCOM02"    
+        				Margin="-11,39,544,118"
+        				VerticalAlignment="Center"
+        				HorizontalAlignment="Center"
+        				Width="200"
+        				Height="30"
+                        SelectedIndex="{Binding SelectedUser.Role}"
+                       Background="Transparent" Grid.Row="1"
+        				ScrollViewer.CanContentScroll="True" Grid.Column="3">
+                            <ComboBoxItem x:Name="Admin01"   Content="Administrator"  />
+                            <ComboBoxItem x:Name="Employee01" Content="Employee"/>
+                        </ComboBox>
+                        <Button x:Name="UpdateUser" Content="Update" 
+        				Width="166"
+                        Click="UpdateUser_Click"
+        				Command="{Binding UpdateUserCommand}" 
+        				Height="34"
+        				VerticalAlignment="Center"
+        				HorizontalAlignment="Center"
+        				Foreground="AliceBlue"
+        				 Margin="322,41,277,112" BorderThickness="0" FontFamily="Yu Gothic UI Semibold" RenderTransformOrigin="0.5,0.5" Grid.Row="1" Grid.Column="3"/>
+                    </Grid>
+
+                </TabItem>
+
+            </TabControl>
+
+        </Border>
+
+    </StackPanel>
+</UserControl>
